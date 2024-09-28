@@ -1,3 +1,5 @@
+using NisanKurumsalSite.Data; // Data katmanýný kullanabilmek için
+
 namespace NisanKurumsalSite.WebUI
 {
     public class Program
@@ -8,6 +10,8 @@ namespace NisanKurumsalSite.WebUI
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<DatabaseContext>(); // DatabaseContext
 
             var app = builder.Build();
 
