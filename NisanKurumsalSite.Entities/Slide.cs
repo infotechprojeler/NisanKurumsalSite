@@ -2,7 +2,7 @@
 
 namespace NisanKurumsalSite.Entities
 {
-    public class Slide
+    public class Slide : IEntity
     {
         public int Id { get; set; }
         [Display(Name = "Başlık")]

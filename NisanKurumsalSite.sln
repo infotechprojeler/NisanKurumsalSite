@@ -5,7 +5,9 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NisanKurumsalSite.WebUI", "NisanKurumsalSite.WebUI\NisanKurumsalSite.WebUI.csproj", "{8CBEB90D-136B-4C4C-8968-E7E16FFD2471}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NisanKurumsalSite.Entities", "NisanKurumsalSite.Entities\NisanKurumsalSite.Entities.csproj", "{CA60BEF7-D042-4E5A-8986-BDDCB5714D44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NisanKurumsalSite.Entities", "NisanKurumsalSite.Entities\NisanKurumsalSite.Entities.csproj", "{CA60BEF7-D042-4E5A-8986-BDDCB5714D44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NisanKurumsalSite.Data", "NisanKurumsalSite.Data\NisanKurumsalSite.Data.csproj", "{85561215-593E-4D98-9CD3-A59DF2342622}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CA60BEF7-D042-4E5A-8986-BDDCB5714D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA60BEF7-D042-4E5A-8986-BDDCB5714D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA60BEF7-D042-4E5A-8986-BDDCB5714D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85561215-593E-4D98-9CD3-A59DF2342622}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85561215-593E-4D98-9CD3-A59DF2342622}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85561215-593E-4D98-9CD3-A59DF2342622}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85561215-593E-4D98-9CD3-A59DF2342622}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

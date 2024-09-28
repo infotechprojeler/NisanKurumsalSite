@@ -2,7 +2,7 @@
 
 namespace NisanKurumsalSite.Entities
 {
-    public class Category
+    public class Category : IEntity
     {
         public int Id { get; set; }
         [Display(Name = "Kategori Adı"), StringLength(50), Required(ErrorMessage = "{0} Boş Bırakılamaz!")]
@@ -15,13 +15,13 @@ namespace NisanKurumsalSite.Entities
         public bool IsActive { get; set; }
         [Display(Name = "Anasayfada Göster")]
         public bool IsHome { get; set; }
-        [Display(Name = "Eklenme Tarihi")]
-        public DateTime? CreateDate { get; set; } = DateTime.Now;
         [Display(Name = "Üst Menüde Göster")]
         public bool IsTopMenu { get; set; }
         [Display(Name = "Üst Menü")]
         public int ParentId { get; set; }
         [Display(Name = "Sıra No")]
         public int OrderNo { get; set; }
+        [Display(Name = "Eklenme Tarihi"), ScaffoldColumn(false)] // ScaffoldColumn özelliği mvc de crud sayfaları oluşturulurken bu kolon ekranda oluşturulsun mu bunu ayarlar, false değeri ekranda oluşturulmasını engeller.
+        public DateTime? CreateDate { get; set; } = DateTime.Now;
     }
 }
