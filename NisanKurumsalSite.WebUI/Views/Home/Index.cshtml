@@ -1,8 +1,9 @@
-﻿@{
+﻿@model HomePageViewModel
+@{
     ViewData["Title"] = "Anasayfa";
 }
 
-<partial name="_Slider" />
+<partial name="_Slider" model="Model.Slides" />
 
 <!-- kart başlangıç -->
 <div id="kart" class="container-fluid">
@@ -88,74 +89,23 @@
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="text-center">
-            <h1>EĞİTİM PROGRAMLARIMIZ</h1>
-            <p class="col-md-7 m-auto pb-5">
-                Bilişim ve Eğitim sektöründeki köklü geçmişimiz, kurslarını başarıyla
-                tamamlamış yüzlerce öğrenci ve
-                danışmanlık
-                hizmeti sunduğumuz, onlarca kurumsal firma ile eğitim kalitemizi arttırmaya devam ediyoruz.
-            </p>
+            <h1>Ürünlerimiz</h1>
         </div>
         <div class="owl-carousel">
-            <div class="item">
-                <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top" src="/Images/react_native_kursu_egitimi_infotechacademy25.png" alt="">
-                    <div class="card-body">
-                        <h5>React Native Kursu-Eğitimi İle Mobil Uygulama Geliştirme</h5>
-                        <p class="card-text">
-                            React Native Kursu-Eğitimi İle Mobil Uygulama Geliştirmeyi öğrenerek kariyerinizi mobil
-                            uygulama alanında ilerletebilirsiniz
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-body-secondary">9 mins</small>
+            @foreach (var item in Model.Products)
+            {
+                <div class="item">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top" src="/Images/@item.Image" alt="">
+                        <div class="card-body">
+                            <h5>@item.Name</h5>
+                            <p class="card-text">
+                                @item.Description
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="item">
-                <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top" src="/Images/net-core-eticaret-gelistirme-egitimi29.png" alt="">
-                    <div class="card-body">
-                        <h5>Mikroservis İle E-Ticaret Projesi Geliştirme Eğitimi</h5>
-                        <p class="card-text">
-                            Bu eğitimde, sıfırdan bir e-ticaret projesini, best-practice yönemler ile .net core mvc
-                            alt yapısında nasıl
-                            geliştirebileceğinizi öğrenmiş olacaksınız
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-body-secondary">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top" src="/Images/aspnetcoemvc16.png" alt="">
-                    <div class="card-body">
-                        <h5>Kurumsal Asp .Net Core Mvc Web Tasarım/Yazılım Eğitimleri</h5>
-                        <p class="card-text">
-                            Günümüzde en çok talep edilen programlama frameworklerden birisi olan
-                            .NET Core kütüphanesi, birçok projeyi başarılı bir
-                            şekilde geliştirmeyi sağlar.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-body-secondary">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>
@@ -237,3 +187,7 @@
     </div>
 </div>
 <!-- mesaj gönder bitiş -->
+
+@section Scripts{
+
+}

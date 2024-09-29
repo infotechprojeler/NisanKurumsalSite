@@ -12,7 +12,7 @@ namespace NisanKurumsalSite.Entities
         public string? Url { get; set; }
         [Display(Name = "Resim"), StringLength(100)]
         public string? Image { get; set; }
-        [Display(Name = "Eklenme Tarihi")]
+        [Display(Name = "Eklenme Tarihi"), ScaffoldColumn(false)]
         public DateTime? CreateDate { get; set; } = DateTime.Now;
     }
 }

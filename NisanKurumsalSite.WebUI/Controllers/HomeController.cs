@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using NisanKurumsalSite.Data;
 using NisanKurumsalSite.WebUI.Models;
 using System.Diagnostics;
 
@@ -6,16 +7,22 @@ namespace NisanKurumsalSite.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly DatabaseContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(DatabaseContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var model = new HomePageViewModel()
+            {
+                Slides = _context.Slides.ToList(),
+                Products = _context.Products.ToList()
+            };
+
+            return View(model);
         }
 
         public IActionResult Privacy()
