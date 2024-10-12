@@ -54,7 +54,10 @@
                     @Html.DisplayFor(modelItem => item.CreateDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Image)
+                    <a href="/images/@item.Image" title="Resmi Büyüt">
+                        <img src="/images/@Html.DisplayFor(modelItem => item.Image)" alt="" height="30" />
+                        <img src="/images/@item.Image" alt="" height="30" />
+                    </a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.IsActive)

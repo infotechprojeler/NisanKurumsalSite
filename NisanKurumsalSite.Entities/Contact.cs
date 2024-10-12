@@ -13,7 +13,7 @@ namespace NisanKurumsalSite.Entities
         public string? Email { get; set; }
         [Display(Name = "Telefon"), StringLength(20)]
         public string? Phone { get; set; }
-        [Display(Name = "Mesaj"), StringLength(500)]
+        [Display(Name = "Mesaj"), StringLength(500), Required(ErrorMessage = "{0} Boş Bırakılamaz!")]
         public string Message { get; set; }
         [Display(Name = "Kayıt Tarihi")]
         public DateTime? CreateDate { get; set; } = DateTime.Now;

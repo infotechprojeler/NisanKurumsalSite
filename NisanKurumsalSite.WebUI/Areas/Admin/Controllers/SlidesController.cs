@@ -65,12 +65,16 @@ namespace NisanKurumsalSite.WebUI.Areas.Admin.Controllers
         // POST: SlidesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Slide collection, IFormFile? Image)
+        public ActionResult Edit(int id, Slide collection, IFormFile? Image, bool cbResmiSil)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    if (cbResmiSil == true)
+                    {
+                        collection.Image = "";
+                    }
                     if (Image is not null)
                     {
                         string klasor = Directory.GetCurrentDirectory() + "/wwwroot/Images/"; // dosyayı yükleyeceğimiz klasör

@@ -23,5 +23,6 @@ namespace NisanKurumsalSite.Entities
         public int OrderNo { get; set; }
         [Display(Name = "Eklenme Tarihi"), ScaffoldColumn(false)] // ScaffoldColumn özelliği mvc de crud sayfaları oluşturulurken bu kolon ekranda oluşturulsun mu bunu ayarlar, false değeri ekranda oluşturulmasını engeller.
         public DateTime? CreateDate { get; set; } = DateTime.Now;
+        public List<Product>? Products { get; set; } // kategori ile ürünler arasında bire çok ilişki kurduk
     }
 }

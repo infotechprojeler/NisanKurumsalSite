@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using NisanKurumsalSite.Data;
 using NisanKurumsalSite.Entities;
 
@@ -18,7 +19,7 @@ namespace NisanKurumsalSite.WebUI.Areas.Admin.Controllers
         // GET: ProductsController
         public ActionResult Index()
         {
-            return View(_context.Products);
+            return View(_context.Products.Include(p => p.Category));
         }
 
         // GET: ProductsController/Create
@@ -68,12 +69,16 @@ namespace NisanKurumsalSite.WebUI.Areas.Admin.Controllers
         // POST: ProductsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Product collection, IFormFile? Image)
+        public ActionResult Edit(int id, Product collection, IFormFile? Image, bool cbResmiSil)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    if (cbResmiSil == true)
+                    {
+                        collection.Image = "";
+                    }
                     if (Image is not null)
                     {
                         string klasor = Directory.GetCurrentDirectory() + "/wwwroot/Images/"; // dosyayı yükleyeceğimiz klasör

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using NisanKurumsalSite.Data;
 using NisanKurumsalSite.Entities;
 
@@ -19,7 +20,7 @@ namespace NisanKurumsalSite.WebUI.Areas.Admin.Controllers
         // GET: CategoriesController
         public ActionResult Index()
         {
-            return View(_context.Categories);
+            return View(_context.Categories.Include(c => c.Products));
         }
 
         // GET: CategoriesController/Create
@@ -32,12 +33,19 @@ namespace NisanKurumsalSite.WebUI.Areas.Admin.Controllers
         // POST: CategoriesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Category collection)
+        public ActionResult Create(Category collection, IFormFile? Image)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    if (Image is not null)
+                    {
+                        string klasor = Directory.GetCurrentDirectory() + "/wwwroot/Images/";
+                        using var stream = new FileStream(klasor + Image.FileName, FileMode.Create);
+                        Image.CopyTo(stream);
+                        collection.Image = Image.FileName;
+                    }
                     _context.Categories.Add(collection);
                     _context.SaveChanges();
                     return RedirectToAction("Index");
@@ -62,12 +70,23 @@ namespace NisanKurumsalSite.WebUI.Areas.Admin.Controllers
         // POST: CategoriesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Category collection)
+        public ActionResult Edit(int id, Category collection, IFormFile? Image, bool cbResmiSil)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    if (cbResmiSil == true)
+                    {
+                        collection.Image = "";
+                    }
+                    if (Image is not null)
+                    {
+                        string klasor = Directory.GetCurrentDirectory() + "/wwwroot/Images/";
+                        using var stream = new FileStream(klasor + Image.FileName, FileMode.Create);
+                        Image.CopyTo(stream);
+                        collection.Image = Image.FileName;
+                    }
                     _context.Categories.Update(collection);
                     _context.SaveChanges();
                     return RedirectToAction("Index");
