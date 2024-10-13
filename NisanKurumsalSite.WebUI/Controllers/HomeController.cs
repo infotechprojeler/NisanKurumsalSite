@@ -20,7 +20,7 @@ namespace NisanKurumsalSite.WebUI.Controllers
             var model = new HomePageViewModel()
             {
                 Slides = _context.Slides.ToList(),
-                Products = _context.Products.ToList(),
+                Products = _context.Products.Where(p => p.IsHome && p.IsActive).ToList(),
                 Categories = _context.Categories.Where(c => c.IsHome).ToList(),
             };
 

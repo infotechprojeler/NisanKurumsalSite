@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NisanKurumsalSite.Data;
 using NisanKurumsalSite.Entities;
 
 namespace NisanKurumsalSite.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"), Authorize(Policy = "AdminPolicy")]
     public class SlidesController : Controller
     {
         private readonly DatabaseContext _context;

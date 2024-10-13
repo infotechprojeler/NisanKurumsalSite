@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NisanKurumsalSite.Data;
@@ -6,7 +7,7 @@ using NisanKurumsalSite.Entities;
 
 namespace NisanKurumsalSite.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"), Authorize(Policy = "AdminPolicy")]
     public class ProductsController : Controller
     {
         private readonly DatabaseContext _context;
